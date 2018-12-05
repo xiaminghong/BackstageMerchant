@@ -24,8 +24,8 @@ export default {
   data() {
     return {
       ruleForm: {
-        username: "",
-        password: ""
+        username: "admin",
+        password: "123456"
       },
       rules: {
         username: [

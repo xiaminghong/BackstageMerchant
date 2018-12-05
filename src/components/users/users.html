@@ -1,0 +1,42 @@
+<div>
+  <!-- 搜索 -->
+    <el-input placeholder="请输入内容" v-model="searchText" class="input-with-select">
+      <el-button slot="append" icon="el-icon-search" @click='search'></el-button>
+    </el-input>
+    <!-- 表格-->
+  <el-table
+:data="usersList"
+style="width: 100%">
+<el-table-column
+  prop="username"
+  label="姓名"
+  width="180">
+</el-table-column>
+<el-table-column
+  prop="email"
+  label="邮箱"
+  width="180">
+</el-table-column>
+<el-table-column
+  prop="mobile"
+  label="电话">
+</el-table-column>
+<el-table-column
+  prop="mg_state"
+  label="用户状态">
+</el-table-column>
+<el-table-column
+  label="操作">
+</el-table-column>
+</el-table>
+<!-- 分页 -->
+<el-pagination
+  background
+  layout="prev, pager, next"
+  :total="total"
+  :page-size='pageSize'
+  :current-page="pagenum"
+  @current-change='changePage'>
+</el-pagination>
+
+</div>

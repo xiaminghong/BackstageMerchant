@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Home from '@/components/home/Home'
 import Login from '@/components/login/Login'
+import Users from '@/components/users/Users'
+import Roles from '@/components/roles/Roles'
+import Rights from '@/components/rights/Rights'
 
 // 安装路由插件
 Vue.use(Router)
@@ -10,7 +14,22 @@ const router = new Router({
   routes: [
     {
       path: '/home',
-      component: Home
+      component: Home,
+      // 子路由
+      children: [
+        {
+          path: '/users',
+          component: Users
+        },
+        {
+          path: '/roles',
+          component: Roles
+        },
+        {
+          path: '/rights',
+          component: Rights
+        }
+      ]
     },
     {
       path: '/',
@@ -20,6 +39,7 @@ const router = new Router({
       path: '/login',
       component: Login
     }
+
   ]
 })
 
