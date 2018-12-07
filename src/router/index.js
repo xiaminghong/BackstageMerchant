@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 import Home from '@/components/home/Home'
 import Login from '@/components/login/Login'
-import Users from '@/components/users/Users'
+import Users from '@/components/users/User'
 import Roles from '@/components/roles/Roles'
 import Rights from '@/components/rights/Rights'
 
