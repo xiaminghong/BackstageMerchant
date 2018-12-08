@@ -8,9 +8,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/index.css'
 import axios from 'axios'
 
-Vue.use(ElementUI)
 // 配置axios基础地址
-axios.prototype.$http = axios
+Vue.prototype.$http = axios
+
 axios.defaults.baseURL = 'http://localhost:8888/api/private/v1/'
 axios.interceptors.request.use((config) => {
   config.headers.Authorization = localStorage.getItem('token')
@@ -24,6 +24,7 @@ axios.interceptors.request.use((config) => {
 
 // 不要去掉，这是 ESLint 的语法，表示：不使用 no-new 规则校验下一行代码
 /* eslint-disable no-new */
+Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 new Vue({

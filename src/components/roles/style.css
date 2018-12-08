@@ -1,0 +1,20 @@
+.crumbs {
+  height: 50px;
+  line-height: 50px;
+  background: #d4dae0;
+  font-size: 16px;
+  padding-left: 10px;
+}
+.level1 {
+  border-bottom: 1px dashed #ccc;
+}
+.level1:last-child {
+  border: 0;
+}
+.level3 {
+  margin-right: 10px;
+}
+.el-tag {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

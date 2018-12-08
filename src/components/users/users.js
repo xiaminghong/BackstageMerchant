@@ -55,6 +55,13 @@ export default {
           message: '手机格式不正确',
           trigger: 'blur'
         }]
+      },
+      isShowUserEditDialog: false,
+      userEditForm: {
+        username: '',
+        email: '',
+        mobile: '',
+        id: -1
       }
     }
   },
@@ -132,12 +139,14 @@ export default {
       }
     },
     showUserAddDialog () {
-      console.log(1111)
+      // console.log(1111)
       this.isShowUserAddDialog = true
     },
     async addUser () {
-      console.log(11122)
+      // await this.$refs.userAddFormRef.validate()
       try {
+        await this.$refs.userAddFormRef.validate()
+        console.log(22222)
         const res = await axios.post('/users', this.userAddForm)
         if (res.data.meta.status === 201) {
           // 添加成功
@@ -153,6 +162,37 @@ export default {
           // console.log(res)
         }
       } catch (err) {}
+    },
+    closeUserAddDialog () {
+      this.$refs.userAddFormRef.resetFields()
+      // this.$refs.userAddFormRef.resetFields()
+    },
+    // 显示编辑对话框
+    isShowEdit (scope) {
+      this.isShowUserEditDialog = true
+      console.log(scope)
+      // this.userEditForm.username = scope.username
+      // this.userEditForm.email = scope.email
+      // this.userEditForm.mobile = scope.mobile
+      for (var key in this.userEditForm) {
+        this.userEditForm[key] = scope[key]
+      }
+    },
+    // 编辑对话框
+    async editUser () {
+      // console.log(this.userEditForm.id)
+
+      const {email, mobile} = this.userEditForm
+      const res = await axios.put(`/users/${this.userEditForm.id}`, {
+        email,
+        mobile
+      })
+      this.isShowUserEditDialog = false
+      this.getUsersList(1, this.searchText)
+      this.$message({
+        type: 'success',
+        message: res.data.meta.msg
+      })
     }
   } // 方法 methods
 }
