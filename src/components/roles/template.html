@@ -49,10 +49,29 @@
     <el-table-column
       label="操作">
       <template slot-scope='scope'>
-          <el-button type="primary" size='mini' plain icon="el-icon-edit"></el-button>
-          <el-button type="danger" size='mini' plain icon="el-icon-delete"></el-button>
+          <el-button type="primary" size='mini' plain icon="el-icon-edit" @click='isShowEditRoleList(scope.row)'></el-button>
+          <el-button type="danger" size='mini' plain icon="el-icon-delete" @click='isShowRoleList'></el-button>
           <el-button type="success" size='mini' plain icon="el-icon-check">分配权限</el-button>
       </template>
     </el-table-column>
   </el-table>
+
+  <el-dialog title="角色编辑" :visible.sync="isShowEditDialog">
+    <el-form :model="EdmiRole" label-width='80px'>
+      <!-- <el-form-item >
+          <el-tag type="info">{{EdmiRole.name}}</el-tag>
+      </el-form-item> -->
+      <el-form-item label="角色名称" >
+        <el-input v-model="EdmiRole.roleName"></el-input>
+      </el-form-item>
+      <el-form-item label="描述" >
+        <el-input v-model="EdmiRole.roleDesc"></el-input>
+      </el-form-item>
+
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="isShowEditDialog = false">取 消</el-button>
+      <el-button type="primary" @click="RoleEditDialog">确 定</el-button>
+    </div>
+  </el-dialog>
 </div>

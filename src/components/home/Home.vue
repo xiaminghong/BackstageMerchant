@@ -61,13 +61,13 @@
             <i class="el-icon-location"></i>
             <span>商品管理</span>
           </template>
-          <el-menu-item index="1-4">
+          <el-menu-item index="/goods">
             <i class="el-icon-menu"></i>
             <span slot="title">商品列表</span>
           </el-menu-item>
           <el-menu-item index="1-5">
             <i class="el-icon-menu"></i>
-            <span slot="title">商品列表</span>
+            <span slot="title"> 分类参数</span>
           </el-menu-item>
           <el-menu-item index="1-6">
             <i class="el-icon-menu"></i>
@@ -110,30 +110,30 @@
 export default {
 
   methods: {
-    open7() {
-      this.$confirm("您确定退出吗?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
+    open7 () {
+      this.$confirm('您确定退出吗?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
         center: false
       })
         .then(() => {
           this.$message({
-            type: "success",
-            message: "退出成功!"
-          });
-          localStorage.removeItem("token");
-          this.$router.push("/login");
+            type: 'success',
+            message: '退出成功!'
+          })
+          localStorage.removeItem('token')
+          this.$router.push('/login')
         })
         .catch(() => {
           this.$message({
-            type: "info",
-            message: "已取消退出"
-          });
-        });
+            type: 'info',
+            message: '已取消退出'
+          })
+        })
     }
   }
-};
+}
 </script>
 
 <style>
