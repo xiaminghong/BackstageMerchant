@@ -65,11 +65,11 @@
             <i class="el-icon-menu"></i>
             <span slot="title">商品列表</span>
           </el-menu-item>
-          <el-menu-item index="1-5">
+          <el-menu-item index="/params">
             <i class="el-icon-menu"></i>
             <span slot="title"> 分类参数</span>
           </el-menu-item>
-          <el-menu-item index="1-6">
+          <el-menu-item index="/categories">
             <i class="el-icon-menu"></i>
             <span slot="title">商品分类</span>
           </el-menu-item>

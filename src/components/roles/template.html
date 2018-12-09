@@ -51,7 +51,7 @@
       <template slot-scope='scope'>
           <el-button type="primary" size='mini' plain icon="el-icon-edit" @click='isShowEditRoleList(scope.row)'></el-button>
           <el-button type="danger" size='mini' plain icon="el-icon-delete" @click='isShowRoleList'></el-button>
-          <el-button type="success" size='mini' plain icon="el-icon-check">分配权限</el-button>
+          <el-button type="success" size='mini' plain icon="el-icon-check" @click='showRoleDialog(scope.row)'>分配权限</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -74,4 +74,21 @@
       <el-button type="primary" @click="RoleEditDialog">确 定</el-button>
     </div>
   </el-dialog>
+  <!-- 分配权限框 -->
+
+  <el-dialog title="角色授权" :visible.sync="isShowRoleDialog">
+      <el-tree
+      ref="tree"
+      :data="rightsTree"
+      :default-expand-all='true'
+      show-checkbox
+      node-key="id"
+      :props="defaultProps">
+    </el-tree>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="isShowRoleDialog = false">取 消</el-button>
+      <el-button type="primary" @click="assignRights">确 定</el-button>
+    </div>
+  </el-dialog>
+
 </div>

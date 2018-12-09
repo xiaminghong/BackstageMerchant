@@ -7,6 +7,8 @@ import Users from '@/components/users/User'
 import Roles from '@/components/roles/Roles'
 import Rights from '@/components/rights/Rights'
 import Goods from '@/components/goods/Goods'
+import Params from '@/components/params/Params'
+import Categories from '@/components/categories/Categories'
 
 // 安装路由插件
 Vue.use(Router)
@@ -33,9 +35,18 @@ const router = new Router({
         {
           path: '/goods',
           component: Goods
+        },
+        {
+          path: '/params',
+          component: Params
+        },
+        {
+          path: '/categories',
+          component: Categories
         }
       ]
     },
+    // 登录页
     {
       path: '/',
       redirect: '/login'
