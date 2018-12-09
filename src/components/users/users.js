@@ -56,17 +56,29 @@ export default {
           trigger: 'blur'
         }]
       },
+      // 编辑框是否显示
       isShowUserEditDialog: false,
       userEditForm: {
         username: '',
         email: '',
         mobile: '',
         id: -1
-      }
-    }
+      },
+      // 分配角色框是否显示
+      isShowUserRoleDialog: false,
+      userRoleForm: {
+        username: '',
+        rid: '',
+        id: -1
+      },
+      // 所有角色列表数据
+      rolesList: []
+    } // return
   },
   created () {
+    // 渲染用户列表
     this.getUsersList()
+    this.getRoleList()
   },
   methods: {
     // 获取用户列表数据
@@ -170,7 +182,7 @@ export default {
     // 显示编辑对话框
     isShowEdit (scope) {
       this.isShowUserEditDialog = true
-      console.log(scope)
+      // console.log(scope)
       // this.userEditForm.username = scope.username
       // this.userEditForm.email = scope.email
       // this.userEditForm.mobile = scope.mobile
@@ -189,6 +201,33 @@ export default {
       })
       this.isShowUserEditDialog = false
       this.getUsersList(1, this.searchText)
+      this.$message({
+        type: 'success',
+        message: res.data.meta.msg
+      })
+    },
+    // 分配角色
+    async showUserRole (scope) {
+      this.isShowUserRoleDialog = true
+      const res = await this.$http.get(`users/${scope.id}`)
+      this.userRoleForm.rid = res.data.data.rid === -1 ? '' : res.data.data.rid
+      console.log(res)
+      this.userRoleForm = res.data.data
+    },
+    async getRoleList () {
+      const res = await this.$http.get('/roles')
+      this.rolesList = res.data.data
+      // console.log(this.rolesList)
+    },
+    async assignRole () {
+      // console.log(11)
+      const {id, rid} = this.userRoleForm
+      const res = await this.$http.put(`users/${id}/role`, {
+        rid
+      })
+      console.log(res)
+      this.isShowUserRoleDialog = false
+      this.getUsersList()
       this.$message({
         type: 'success',
         message: res.data.meta.msg
