@@ -1,13 +1,3 @@
-<template>
-   <div>商品分类</div>
-</template>
-
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
-</style>
+<template src='./template.html'></template>
+<script src='./script.js'></script>
+<style src='./type.less' lang='less' scope></style>

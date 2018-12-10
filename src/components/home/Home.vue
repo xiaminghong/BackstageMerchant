@@ -88,9 +88,9 @@ export default {
     },
     async getMenus () {
       const res = await this.$http.get('menus')
-      console.log(res)
+      // console.log(res)
       this.menus = res.data.data
-      console.log(this.menus)
+      // console.log(this.menus)
     }
   }
 }
