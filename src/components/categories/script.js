@@ -71,6 +71,7 @@ export default {
           type: 2
         }
       })
+      // 打开对话框
       this.cateAddList = res.data.data
       // console.log(res)
     },

@@ -9,6 +9,7 @@ import Rights from '@/components/rights/Rights'
 import Goods from '@/components/goods/Goods'
 import Params from '@/components/params/Params'
 import Categories from '@/components/categories/Categories'
+import goodsAdd from '@/components/goods-add/goodsAdd'
 
 // 安装路由插件
 Vue.use(Router)
@@ -43,6 +44,10 @@ const router = new Router({
         {
           path: '/categories',
           component: Categories
+        },
+        {
+          path: '/goods-add',
+          component: goodsAdd
         }
       ]
     },

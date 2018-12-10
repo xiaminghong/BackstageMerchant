@@ -1,3 +1,3 @@
 <template src='./template.html'></template>
 <script src='./script.js'></script>
-<style src='./type.less' lang='less' scope></style>
+<style src='./style.less' lang='less' scoped></style>

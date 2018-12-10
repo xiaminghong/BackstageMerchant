@@ -1,0 +1,20 @@
+<div>
+    <!-- :active="active"  当前项激活的索引号，从 0 开始 -->
+  <el-steps :active="stepActive" finish-status="success">
+      <el-step title="第一步" description="基本信息"></el-step>
+      <el-step title="第二步" description="商品图片"></el-step>
+      <el-step title="第三步" description="商品内容"></el-step>
+    </el-steps>
+<!-- 标签页 -->
+  <el-tabs v-model="tabActive" tab-position="left" style="height: 200px;" @tab-click='changeTab'>
+      <el-tab-pane label="基本信息" name="basic">
+        <el-button type="primary" @click="nextStep(1,'pics')">下一步</el-button>
+      </el-tab-pane>
+      <el-tab-pane label="商品图片" name="pics">
+        <el-button type="primary" @click="nextStep(2,'content')">下一步</el-button>
+      </el-tab-pane>
+      <el-tab-pane label="商品内容" name="content">
+        <el-button type="primary">确定</el-button>
+      </el-tab-pane>
+    </el-tabs>
+</div>
