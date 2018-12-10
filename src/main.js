@@ -8,6 +8,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/index.css'
 import axios from 'axios'
 
+// import ElTreeGrid from 'element-tree-grid'
+// Vue.component(ElTreeGrid.name,ElTreeGrid);
 // 配置axios基础地址
 Vue.prototype.$http = axios
 
