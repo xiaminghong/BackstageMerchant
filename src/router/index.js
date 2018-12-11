@@ -38,10 +38,6 @@ const router = new Router({
           component: Goods
         },
         {
-          path: '/params',
-          component: Params
-        },
-        {
           path: '/categories',
           component: Categories
         },
@@ -49,6 +45,7 @@ const router = new Router({
           path: '/goods-add',
           component: goodsAdd
         }
+
       ]
     },
     // 登录页
@@ -59,6 +56,10 @@ const router = new Router({
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '*',
+      component: Params
     }
 
   ]
