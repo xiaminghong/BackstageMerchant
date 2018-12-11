@@ -6,15 +6,55 @@
       <el-step title="第三步" description="商品内容"></el-step>
     </el-steps>
 <!-- 标签页 -->
-  <el-tabs v-model="tabActive" tab-position="left" style="height: 200px;" @tab-click='changeTab'>
+  <el-tabs v-model="tabActive" tab-position="left"  @tab-click='changeTab'>
       <el-tab-pane label="基本信息" name="basic">
+          <el-form :model="goodsAddForm" label-width="80px">
+              <el-form-item label="商品名称">
+                <el-input v-model="goodsAddForm.goods_name"></el-input>
+              </el-form-item>
+              <el-form-item label="商品价格">
+                <el-input v-model="goodsAddForm.goods_price"></el-input>
+              </el-form-item>
+              <el-form-item label="商品重量">
+                <el-input v-model="goodsAddForm.goods_weight"></el-input>
+              </el-form-item>
+              <el-form-item label="商品数量">
+                <el-input v-model="goodsAddForm.goods_number"></el-input>
+              </el-form-item>
+              <el-form-item label="商品分类">
+                <!-- 3级联动 -->
+                <el-cascader
+                  :options="cateList"
+                  v-model="goodsAddForm.goods_cat"
+                  :props="{label:'cat_name',value:'cat_id'}"
+
+                  >
+                </el-cascader>
+              </el-form-item>
+              <el-form-item  label="是否促销">
+                <!-- 单选框 -->
+                <el-radio v-model="goodsAddForm.is_promote" :label="true">是</el-radio>
+                <el-radio v-model="goodsAddForm.is_promote" :label="false">否</el-radio>
+              </el-form-item>
+          </el-form>
         <el-button type="primary" @click="nextStep(1,'pics')">下一步</el-button>
       </el-tab-pane>
       <el-tab-pane label="商品图片" name="pics">
+          <!-- list-type="picture-card" 文件列表的类型 -->
+          <el-upload
+          action="http://localhost:8888/api/private/v1/upload"
+          :on-success="uploadSuccess"
+          :headers="uploadHeaders"
+          list-type="picture-card">
+          <el-button size="small" type="primary">点击上传</el-button>
+          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+        </el-upload>
         <el-button type="primary" @click="nextStep(2,'content')">下一步</el-button>
       </el-tab-pane>
       <el-tab-pane label="商品内容" name="content">
-        <el-button type="primary">确定</el-button>
+        <quill-editor v-model="goodsAddForm.goods_introduce" class="introduce">
+        </quill-editor>
+        <el-button type="primary" @click="addGoods">确定</el-button>
       </el-tab-pane>
     </el-tabs>
 </div>
