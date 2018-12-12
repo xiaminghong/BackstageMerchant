@@ -35,8 +35,18 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': resolve('src')
     }
+  },
+  // 配置 CDN 地址
+  externals: {
+    vue: 'Vue',
+    'vue-router': 'VueRouter',
+    axios: 'axios',
+    // 注意：带有样式文件的第三方包，需要在 代码中 将样式注释掉！！！
+    'element-ui': 'ELEMENT',
+    'element-tree-grid': 'ElTableTreeColumn',
+    'vue-quill-editor': 'VueQuillEditor'
   },
   module: {
     rules: [
